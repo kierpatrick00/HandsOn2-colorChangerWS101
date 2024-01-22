@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://i.pinimg.com/originals/d4/81/f3/d481f3c72e283309071f79e01b05c06d.gif') center center fixed;
+            background-size: cover;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            backdrop-filter: blur(px); 
+            border: 3px solid rgba(52, 152, 219, 0.5); 
+            border-radius: 10px;
+            padding: 20px; 
+            background-color: rgba(255, 255, 255, 0.1); 
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: aliceblue;
+        }
+
+        #colorBox {
+            background-color: #3498db;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto; 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        button {
+            padding: 15px;
+            margin-top: 20px;
+            width: 150px;
+            background-color: #4b2ecc;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #7f80e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Color Changer Game</h1>
+        <div id="colorBox"></div>
+        <button id="changeColorBtn">Change Color</button>
+    </div>
+
+    <script>
+        const colorBox = document.getElementById("colorBox");
+        const changeColorBtn = document.getElementById("changeColorBtn");
+
+        changeColorBtn.addEventListener('click', changeColor);
+
+        function changeColor() {
+            const currentColor = getComputedStyle(colorBox).getPropertyValue("background-color");
+            const newColor = currentColor === "rgb(52, 152, 219)" ? "#e74c3c" : "#3498db";
+            colorBox.style.backgroundColor = newColor;
+        }
+    </script>
+</body>
+</html>
